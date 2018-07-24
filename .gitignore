@@ -1,104 +1,31 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
+train_mass = 22680
+train_acceleration = 10
+train_distance = 100
 
-# C extensions
-*.so
+bomb_mass = 1
 
-# Distribution / packaging
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
+def f_to_c(f_temp):
+  c_temp = (f_temp - 32) * 5/9
+  return c_temp
 
-# PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
-*.manifest
-*.spec
+f100_in_celsius = f_to_c(100)
 
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
+def c_to_f(c_temp):
+  f_temp = c_temp * (9/5) + 32
+  return f_temp
 
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-.hypothesis/
-.pytest_cache/
+c0_in_farenheit = c_to_f(0)
 
-# Translations
-*.mo
-*.pot
+def get_force(mass, acceleration):
+  force = mass * acceleration
+  return force
 
-# Django stuff:
-*.log
-local_settings.py
-db.sqlite3
+train_force = get_force(train_mass, train_acceleration)
+print(train_force)
 
-# Flask stuff:
-instance/
-.webassets-cache
+print("The GE train supplies " + str(train_force) + " Newtons of force.")
 
-# Scrapy stuff:
-.scrapy
-
-# Sphinx documentation
-docs/_build/
-
-# PyBuilder
-target/
-
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# pyenv
-.python-version
-
-# celery beat schedule file
-celerybeat-schedule
-
-# SageMath parsed files
-*.sage.py
-
-# Environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-
-# Spyder project settings
-.spyderproject
-.spyproject
-
-# Rope project settings
-.ropeproject
-
-# mkdocs documentation
-/site
-
-# mypy
-.mypy_cache/
+def get_energy(mass, c = 3*10**8):
+  return mass * (c*c)
+bomb_energy = get_energy(bomb_mass, c = 3*10**8)
+print("A 1kg bomb supplies " + str(bomb_energy) + " Joules")
