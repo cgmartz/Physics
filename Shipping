@@ -1,0 +1,39 @@
+def ground_shipping(weight):
+ if weight <= 2:
+   cost = (weight * 1.50) + 20.00
+   return cost
+ elif weight <= 6:
+   cost = (weight * 3.00) + 20.00
+   return cost
+ elif weight <= 10:
+   cost = (weight * 4.00) + 20.00
+   return cost
+ else:
+   cost = (weight * 4.75) + 20.00
+   return cost
+
+premium_ground_shipping = 125.00
+
+def drone_shipping(weight):
+ if weight <= 2:
+   cost = weight * 4.50
+   return cost
+ elif weight <= 6:
+   cost = weight * 9.00
+   return cost
+ elif weight <= 10:
+   cost = weight * 12.00
+   return cost
+ else:
+   cost = weight * 14.25
+   return cost
+
+def best_value(weight):
+ if (drone_shipping(weight) < premium_ground_shipping) and (drone_shipping(weight) < ground_shipping(weight)):
+   print("Drone Shipping is your best value with a total price of $" + str(drone_shipping(weight)) + "!")
+ elif ground_shipping(weight) < premium_ground_shipping:
+   print("Ground Shipping is your best value with a total price of $" + str(ground_shipping(weight)) + "!")
+ else:
+   print("Premium Ground Shipping is your best value with a total price of $" + str(premium_ground_shipping) + "!")
+# The following function call is a test for accuracy
+print(best_value(41.5))
